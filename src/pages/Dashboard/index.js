@@ -44,7 +44,7 @@ function Dashboard({ isFocused }) {
         <Title>Agendamentos</Title>
         <List
           data={appointments}
-          keyExtractor={item => String(item)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <Appointment
               key={item.id}

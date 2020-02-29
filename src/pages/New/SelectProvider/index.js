@@ -23,7 +23,7 @@ export default function SelectProvider({ navigation }) {
       <Container>
         <ProvidersList
           data={providers}
-          keyExtractor={provider => String(provider.id)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item: provider }) => (
             <Provider
               onPress={() =>
