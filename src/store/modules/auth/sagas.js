@@ -1,13 +1,14 @@
 import { Alert } from 'react-native';
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 
-import { signInSuccess, signFailure } from './actions';
+import { signInSuccess, signFailure, signInRequest } from './actions';
 
 import api from '~/services/api';
 
 export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
+    console.tron.log(payload);
     const response = yield call(api.post, 'sessions', {
       email,
       password,
@@ -44,7 +45,7 @@ export function* signUp({ payload }) {
       email,
       password,
     });
-
+    yield put(signInRequest(email, password));
     // history.push('/');
   } catch (err) {
     yield put(signFailure());
